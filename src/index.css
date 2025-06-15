@@ -1,3 +1,15 @@
+
+  @font-face{
+    font-family: Rubik;
+    src: url('../src/assets/Fonts/Rubik-Regular.ttf');
+}
+@import "tailwindcss";
+
+@theme{
+    --font-rubik: Rubik
+}
+
+
 @keyframes fade-in {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -6,3 +18,6 @@
   .animate-fade-in {
     animation: fade-in 1s ease-out;
   }
+
+
+

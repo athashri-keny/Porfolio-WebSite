@@ -1,58 +1,93 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './App.css';
-import { FaGithub, FaLinkedin, FaRegEnvelope, FaReact, FaNodeJs } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaRegEnvelope, FaReact, FaNodeJs, FaFileDownload } from 'react-icons/fa';
 import { SiRedux, SiExpress, SiTailwindcss } from 'react-icons/si';
 import { DiJavascript } from 'react-icons/di';
 import { BiCode } from 'react-icons/bi';
+import Navbar from './components/Navbar';
+import Project2 from '../src/assets/Pics/Project2.png';
+import Project1 from '../src/assets/Pics/Project1.png';
+import Project3 from '../src/assets/Pics/Project3.png';
 
 function App() {
-  return (
-    <div className="bg-gray-900 text-gray-200 min-h-screen font-inter">
-      {/* Navbar */}
-      <nav className="fixed w-full top-0 z-50 flex justify-between items-center p-6 bg-gray-800/95 backdrop-blur-sm shadow-xl">
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-          Athashri Keny
-        </h1>
-        <div className="space-x-8">
-          <a href="#about" className="hover:text-blue-400 transition-colors duration-300 font-medium">About</a>
-          <a href="#projects" className="hover:text-blue-400 transition-colors duration-300 font-medium">Projects</a>
-          <a href="#contact" className="hover:text-blue-400 transition-colors duration-300 font-medium">Contact</a>
-        </div>
-      </nav>
+  const formRef = useRef(null);
 
-      {/* Hero Section */}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(formRef.current);
+    fetch('https://formspree.io/f/xanjjevz', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        alert('Message sent successfully!');
+        formRef.current.reset();
+      } else {
+        alert('Error sending message. Please try again.');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again later.');
+    });
+  };
+
+  return (
+    <div className="bg-gray-900 text-gray-200 min-h-screen font-inter scroll-smooth">
+
+      <Navbar />
       <header className="pt-32 text-center px-6 pb-20 bg-gradient-to-b from-gray-800 to-gray-900">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-5xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent mb-6 animate-fade-in">
-            Frontend Developer
-          </h2>
-          <p className="text-xl text-gray-400 mb-8">Crafting beautiful digital experiences with React & modern web tech</p>
-          <div className="flex justify-center space-x-4">
-            <a 
-              href="#contact" 
-              className="bg-blue-500 hover:bg-blue-600 px-8 py-3 rounded-lg font-medium transition-colors duration-300"
+          <div className="flex flex-col md:flex-row items-center justify-center gap-44 mb-6">
+            <h2 className="text-5xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent animate-fade-in font-rubik">
+              Frontend Developer
+            </h2>          
+          </div>
+          <p className="text-xl text-gray-400 mb-8 font-rubik">
+            Crafting beautiful digital experiences with React & modern web tech
+          </p>
+
+
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="#contact"
+              className="bg-blue-500 hover:bg-blue-600 px-8 py-3 rounded-lg font-medium transition-all duration-300 font-rubik transform hover:-translate-y-1 shadow-lg shadow-blue-500/20"
             >
               Let's Connect
             </a>
-            <a 
-              href="#projects" 
-              className="border border-blue-500 text-blue-400 hover:bg-blue-500/10 px-8 py-3 rounded-lg font-medium transition-colors duration-300"
+            <a
+              href="#projects"
+              className="border border-blue-500 text-blue-400 hover:bg-blue-500/10 px-8 py-3 rounded-lg font-medium transition-all duration-300 font-rubik transform hover:-translate-y-1"
             >
               View Work
+            </a>
+            <a
+              href="https://drive.google.com/file/d/1s7i0ld-pGUee3py2XKv3yInHN6-82Ifj/view? usp=sharing"
+              target='_'
+              className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 px-8 py-3 rounded-lg font-medium transition-all duration-300 font-rubik transform hover:-translate-y-1 shadow-lg shadow-emerald-500/20"
+            >
+              <FaFileDownload />
+              View Resume
             </a>
           </div>
         </div>
       </header>
-
-      {/* About Section */}
       <section id="about" className="py-20 px-6 bg-gray-850">
         <div className="max-w-4xl mx-auto">
-          <h3 className="text-3xl font-bold text-gray-300 mb-8 text-center">About Me</h3>
+          <h3 className="text-3xl font-bold text-gray-300 mb-8 text-center animate-fade-in">About Me</h3>
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-4 text-gray-400 leading-relaxed">
+            <div className="space-y-4 text-gray-400 leading-relaxed animate-fade-in-up">
               <p>
                 As a passionate second-year Computer Science student, I specialize in creating engaging web experiences 
                 using modern technologies. My focus is on building responsive, accessible, and performant applications.
+              </p>
+              <p>
+                Currently seeking internship opportunities to apply my skills in real-world projects and contribute to 
+                innovative teams.
               </p>
               <div className="mt-6 grid grid-cols-2 gap-4">
                 <div className="flex items-center space-x-2">
@@ -60,140 +95,298 @@ function App() {
                   <span>React</span>
                 </div>
                 <div className='flex items-center space-x-2'>
-                 <BiCode className = "text-orange-400"/>
-                 <span> HTML </span>
+                  <BiCode className="text-orange-400" />
+                  <span>HTML</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <SiTailwindcss className="text-blue-400" />
-                  <span>Tailwind CSS / CSS </span>
+                  <span>Tailwind CSS</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <SiRedux className="text-purple-400" />
                   <span>Redux Toolkit</span>
                 </div>
                 <div className='flex items-center space-x-2'>
-                  <DiJavascript className='text-yellow-300'/>
-                  <span> JavaScript </span>
+                  <DiJavascript className='text-yellow-300' />
+                  <span>JavaScript</span>
                 </div>
                 <div className='flex items-center space-x-2'>
-                  <FaGithub className='text-gray-400'/>
-                  <span> Git/GitHub </span>
+                  <FaGithub className='text-gray-400' />
+                  <span>Git/GitHub</span>
                 </div>
               </div>
             </div>
-            <div className="bg-gray-700 rounded-xl p-6 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300">
+            <div className="bg-gray-700 rounded-xl p-6 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300 animate-fade-in-up">
               <h4 className="text-xl font-semibold mb-4">Current Focus</h4>
               <ul className="space-y-3 list-disc list-inside text-gray-400">
                 <li>Full-stack development patterns</li>
                 <li>Web performance optimization</li>
                 <li>Accessibility best practices</li>
-                <li>Looking For An InternShip </li>
+                <li className="font-bold text-emerald-400">Seeking Frontend Development Internship</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Projects Section */}
       <section id="projects" className="py-20 px-6 bg-gray-900">
-        <div className="max-w-4xl mx-auto">
-          <h3 className="text-3xl font-bold text-gray-300 mb-12 text-center">Featured Projects</h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Project 1 */}
-            <div className="bg-gray-800 rounded-xl p-6 shadow-2xl hover:transform hover:-translate-y-2 transition-all duration-300 group">
-              <div className="mb-4 relative overflow-hidden rounded-lg h-48">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-green-500/20" />
-                <div className="absolute bottom-4 left-4 flex space-x-2">
+        <div className="max-w-6xl mx-auto">
+          <h3 className="text-3xl font-bold text-gray-300 mb-12 text-center animate-fade-in">Featured Projects</h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-gray-800 rounded-xl overflow-hidden shadow-2xl hover:transform hover:-translate-y-2 transition-all duration-300 group">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={Project1} 
+                  alt="Video Streaming Platform" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
                   <span className="bg-gray-900/80 px-3 py-1 rounded-full text-sm text-blue-400">React</span>
                   <span className="bg-gray-900/80 px-3 py-1 rounded-full text-sm text-green-400">Node.js</span>
                   <span className="bg-gray-900/80 px-3 py-1 rounded-full text-sm text-purple-400">Redux</span>
                 </div>
               </div>
-              <h4 className="text-xl font-semibold mb-2">Video Streaming Platform</h4>
-              <p className="text-gray-400 mb-4">Full-stack video streaming solution and user authentication</p>
-              <div className="flex space-x-4">
-                <a 
-                  href="https://github.com/athashri-keny/Full-Stack-Video-Streaming-Project" 
-                  target="_blank"
-                  className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors"
-                >
-                  <FaGithub />
-                  <span>Code</span>
-                </a>
-                <a 
-                  href="https://full-stack-video-streaming-project-hlxr.onrender.com" 
-                  target="_blank"
-                  className="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors"
-                >
-                  <FaRegEnvelope />
-                  <span>Demo</span>
-                </a>
+              <div className="p-6">
+                <h4 className="text-xl font-semibold mb-2">Video Streaming Platform</h4>
+                <p className="text-gray-400 mb-4">Full-stack video streaming solution with user authentication</p>
+                <div className="flex space-x-4">
+                  <a 
+                    href="https://github.com/athashri-keny/Full-Stack-Video-Streaming-Project" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors"
+                  >
+                    <FaGithub />
+                    <span>Code</span>
+                  </a>
+                  <a 
+                    href="https://full-stack-video-streaming-project-hlxr.onrender.com" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors"
+                  >
+                    <FaRegEnvelope />
+                    <span>Live</span>
+                  </a>
+                </div>
               </div>
             </div>
-
-            {/* Project 2 */}
-            <div className="bg-gray-800 rounded-xl p-6 shadow-2xl hover:transform hover:-translate-y-2 transition-all duration-300 group">
-              <div className="mb-4 relative overflow-hidden rounded-lg h-48">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20" />
-                <div className="absolute bottom-4 left-4 flex space-x-2">
+            <div className="bg-gray-800 rounded-xl overflow-hidden shadow-2xl hover:transform hover:-translate-y-2 transition-all duration-300 group">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={Project2} 
+                  alt="Modern Blog Application" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
                   <span className="bg-gray-900/80 px-3 py-1 rounded-full text-sm text-blue-400">React</span>
                   <span className="bg-gray-900/80 px-3 py-1 rounded-full text-sm text-red-400">Appwrite</span>
                   <span className="bg-gray-900/80 px-3 py-1 rounded-full text-sm text-yellow-400">RTK Query</span>
                 </div>
               </div>
-              <h4 className="text-xl font-semibold mb-2">Modern Blog Application</h4>
-              <p className="text-gray-400 mb-4">Feature-rich blog platform with real-time updates and rich text editing</p>
-              <div className="flex space-x-4">
-                <a 
-                  href="https://github.com/athashri-keny/Blog-App" 
-                  target="_blank"
-                  className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors"
-                >
-                  <FaGithub />
-                  <span>Code</span>
-                </a>
-                <a 
-                  href="https://blog-app-seven-tan.vercel.app/" 
-                  target="_blank"
-                  className="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors"
-                >
-                  <FaRegEnvelope />
-                  <span>Demo</span>
-                </a>
+              <div className="p-6">
+                <h4 className="text-xl font-semibold mb-2">Modern Blog Application</h4>
+                <p className="text-gray-400 mb-4">Feature-rich blog platform with real-time updates</p>
+                <div className="flex space-x-4">
+                  <a 
+                    href="https://github.com/athashri-keny/Blog-App" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors"
+                  >
+                    <FaGithub />
+                    <span>Code</span>
+                  </a>
+                  <a 
+                    href="https://blog-app-navy-ten-46.vercel.app/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors"
+                  >
+                    <FaRegEnvelope />
+                    <span>Live</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gray-800 rounded-xl overflow-hidden shadow-2xl hover:transform hover:-translate-y-2 transition-all duration-300 group">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={Project3} 
+                  alt="E-Commerce Dashboard" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
+                  <span className="bg-gray-900/80 px-3 py-1 rounded-full text-sm text-blue-400">React</span>
+                  <span className="bg-gray-900/80 px-3 py-1 rounded-full text-sm text-amber-400">Firebase</span>
+                  <span className="bg-gray-900/80 px-3 py-1 rounded-full text-sm text-emerald-400">Chart.js</span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h4 className="text-xl font-semibold mb-2">Pet Adopation Website</h4>
+                <p className="text-gray-400 mb-4">A Pet Website Where you Browse , Adopt Pets</p>
+                <div className="flex space-x-4">
+                  <a 
+                    href="https://github.com/athashri-keny/Pet-Adoption-Project" 
+                    target='_'
+                    className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors"
+                  >
+                    <FaGithub />
+                    <span>Code</span>
+                  </a>
+                  <a 
+                    href="https://pet-adoption-project-bntc.vercel.app/"
+                    target='_' 
+                    className="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors"
+                  >
+                    <FaRegEnvelope />
+                    <span>Live</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+      <section id="education" className="py-20 px-6 bg-gray-850">
+        <div className="max-w-4xl mx-auto">
+          <h3 className="text-3xl font-bold text-gray-300 mb-12 text-center animate-fade-in">Education</h3>
+          
+          <div className="space-y-8 relative">
+            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-blue-500 transform -translate-x-1/2 ml-8"></div>
+            <div className="relative pl-16 animate-fade-in-right">
+              <div className="absolute left-0 top-4 w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
+                <span className="text-white font-bold">1</span>
+              </div>
+              <h4 className="text-xl font-bold text-blue-400">Tilak Maharashtra Vidyapeeth</h4>
+              <p className="text-gray-400"> (BCA) Bachelor of Computer Science </p>
+              <p className="text-gray-500">2023 - 2026 (Current)</p>
+            </div>
+            <div className="relative pl-16 mt-12 animate-fade-in-right">
+              <div className="absolute left-0 top-4 w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
+                <span className="text-white font-bold">2</span>
+              </div>
+              <h4 className="text-xl font-bold text-green-400">Maharshi Dayanand College</h4>
+              <p className="text-gray-400">Higher Secondary Education</p>
+              <p className="text-gray-500">2021 - 2023</p>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 bg-gray-850">
-        <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-3xl font-bold text-gray-300 mb-8">Let's Connect</h3>
-          <p className="text-gray-400 mb-12 max-w-xl mx-auto">
-            Whether you have a project idea, need a collaborator, or just want to chat about tech - I'm always open to new opportunities!
+            </div>
+            <div className="relative pl-16 mt-12 animate-fade-in-right">
+              <div className="absolute left-0 top-4 w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center">
+                <span className="text-white font-bold">3</span>
+              </div>
+              <h4 className="text-xl font-bold text-purple-400">St. Paul High School</h4>
+              <p className="text-gray-400">Secondary Education</p>
+              <p className="text-gray-500">2008 - 2020</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="py-20 px-6 bg-gray-900">
+        <div className="max-w-4xl mx-auto">
+          <h3 className="text-3xl font-bold text-gray-300 mb-8 text-center animate-fade-in">Let's Connect</h3>
+          <p className="text-gray-400 mb-12 max-w-xl mx-auto text-center">
+            I'm actively seeking internship opportunities! Feel free to reach out for collaborations or job inquiries.
           </p>
-          <div className="flex justify-center space-x-8">
-            <a 
-              href="https://github.com/athashri-keny" 
-              target="_blank"
-              className="p-4 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-300"
-            >
-              <FaGithub size={24} className="text-gray-300" />
-            </a>
-            <a 
-              href="https://www.linkedin.com/in/athashri-keny-98b92732a/" 
-              target="_blank"
-              className="p-4 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-300"
-            >
-              <FaLinkedin size={24} className="text-gray-300" />
-            </a>
-            <a 
-              href="mailto:athashrikeny38@gmail.com" 
-              className="p-4 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-300"
-            >
-              <FaRegEnvelope size={24} className="text-gray-300" />
-            </a>
+          
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="animate-fade-in-left">
+              <form 
+                ref={formRef}
+                onSubmit={handleSubmit}
+                className="space-y-6"
+              >
+                <div>
+                  <label htmlFor="name" className="block text-gray-300 mb-2">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+                    placeholder="Your name"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-gray-300 mb-2">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-gray-300 mb-2">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows="5"
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+                    placeholder="Your message..."
+                  ></textarea>
+                </div>
+                
+                <button
+                  type="submit"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 transform hover:-translate-y-1"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+            
+            <div className="animate-fade-in-right">
+              <div className="bg-gray-800 rounded-xl p-8 h-full">
+                <h4 className="text-xl font-semibold mb-6 text-blue-400">Contact Information</h4>
+                
+                <p className="text-gray-300 mb-6">
+                  I'm currently available for internship opportunities and freelance work. 
+                  Feel free to reach out if you want to collaborate or just say hi!
+                </p>
+                
+                <div className="space-y-4">
+                  <a 
+                    href="mailto:athashrikeny38@gmail.com" 
+                    className="flex items-center gap-3 text-gray-300 hover:text-blue-400 transition-colors"
+                  >
+                    <FaRegEnvelope className="text-xl" />
+                    <span>athashrikeny38@gmail.com</span>
+                  </a>
+                  
+                  <div className="flex gap-6 mt-8">
+                    <a 
+                      href="https://github.com/athashri-keny" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-4 rounded-full bg-gray-700 hover:bg-gray-600 transition-all duration-300 transform hover:-translate-y-1"
+                    >
+                      <FaGithub size={24} className="text-gray-300" />
+                    </a>
+                    <a 
+                      href="https://www.linkedin.com/in/athashri-keny-98b92732a/" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-4 rounded-full bg-gray-700 hover:bg-gray-600 transition-all duration-300 transform hover:-translate-y-1"
+                    >
+                      <FaLinkedin size={24} className="text-gray-300" />
+                    </a>
+                  </div>
+                  
+                  <div className="mt-8 pt-6 border-t border-gray-700">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -201,7 +394,8 @@ function App() {
       {/* Footer */}
       <footer className="py-8 bg-gray-900 border-t border-gray-800">
         <div className="text-center text-gray-500 text-sm">
-          <p>Built with React & Tailwind CSS • © 2024 Athashri Keny</p>
+          <p>Built with React & Tailwind CSS • © {new Date().getFullYear()} Athashri Keny</p>
+       
         </div>
       </footer>
     </div>
