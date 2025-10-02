@@ -1,13 +1,17 @@
 import React, { useRef } from 'react';
 import './App.css';
 import { FaGithub, FaLinkedin, FaRegEnvelope, FaReact, FaNodeJs, FaFileDownload } from 'react-icons/fa';
-import { SiRedux, SiExpress, SiTailwindcss } from 'react-icons/si';
+import { SiRedux, SiExpress, SiTailwindcss, SiTypescript } from 'react-icons/si';
 import { DiJavascript } from 'react-icons/di';
 import { BiCode } from 'react-icons/bi';
 import Navbar from './components/Navbar';
 import Project2 from '../src/assets/Pics/Project2.png';
 import Project1 from '../src/assets/Pics/Project1.png';
 import Project3 from '../src/assets/Pics/Project3.png';
+import Project4 from '../src/assets/Pics/Project4.png'
+
+
+import { FaDiagramNext } from 'react-icons/fa6';
 
 function App() {
   const formRef = useRef(null);
@@ -44,11 +48,11 @@ function App() {
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-center gap-44 mb-6">
             <h2 className="text-5xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent animate-fade-in font-rubik">
-              Frontend Developer
+              Full Stack Developer
             </h2>          
           </div>
           <p className="text-xl text-gray-400 mb-8 font-rubik">
-            Crafting beautiful digital experiences with React & modern web tech
+            Crafting beautiful digital experiences with React,Next.js and modern web tech
           </p>
 
 
@@ -82,8 +86,8 @@ function App() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-4 text-gray-400 leading-relaxed animate-fade-in-up">
               <p>
-                As a passionate second-year Computer Science student, I specialize in creating engaging web experiences 
-                using modern technologies. My focus is on building responsive, accessible, and performant applications.
+                As a passionate Third-year Computer Science student, I specialize in creating engaging web experiences 
+                using modern technologies. My focus is on building accessible, and performant applications.
               </p>
               <p>
                 Currently seeking internship opportunities to apply my skills in real-world projects and contribute to 
@@ -93,6 +97,10 @@ function App() {
                 <div className="flex items-center space-x-2">
                   <FaReact className="text-blue-400" />
                   <span>React</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <FaDiagramNext className="text-blue-400" />
+                  <span>Next.js</span>
                 </div>
                 <div className='flex items-center space-x-2'>
                   <BiCode className="text-orange-400" />
@@ -110,9 +118,9 @@ function App() {
                   <DiJavascript className='text-yellow-300' />
                   <span>JavaScript</span>
                 </div>
-                <div className='flex items-center space-x-2'>
-                  <FaGithub className='text-gray-400' />
-                  <span>Git/GitHub</span>
+                 <div className='flex items-center space-x-2'>
+                  <SiTypescript className='text-yellow-300' />
+                  <span>TypeScript</span>
                 </div>
               </div>
             </div>
@@ -122,7 +130,7 @@ function App() {
                 <li>Full-stack development patterns</li>
                 <li>Web performance optimization</li>
                 <li>Accessibility best practices</li>
-                <li className="font-bold text-emerald-400">Seeking Frontend Development Internship</li>
+                <li className="font-bold text-emerald-400">Seeking Full Stack  Development Internship</li>
               </ul>
             </div>
           </div>
@@ -132,6 +140,46 @@ function App() {
         <div className="max-w-6xl mx-auto">
           <h3 className="text-3xl font-bold text-gray-300 mb-12 text-center animate-fade-in">Featured Projects</h3>
           <div className="grid md:grid-cols-3 gap-8">
+
+                        <div className="bg-gray-800 rounded-xl overflow-hidden shadow-2xl hover:transform hover:-translate-y-2 transition-all duration-300 group">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={Project4} 
+                  alt="Modern Blog Application" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
+                  <span className=" px-3 py-1 rounded-full text-sm text-black bg-white">Next.js</span>
+                  <span className="bg-gray-900/80 px-3 py-1 rounded-full text-sm text-yellow-400">TypeScript</span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h4 className="text-xl font-semibold mb-2">Stay-Finder</h4>
+                <p className="text-gray-400 mb-4">Find Your Perfect Home Stay!</p>
+                <div className="flex space-x-4">
+                  <a 
+                    href="https://github.com/athashri-keny/stay-finder" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors"
+                  >
+                    <FaGithub />
+                    <span>Code</span>
+                  </a>
+                  <a 
+                    href="https://stay-finder-umber.vercel.app/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors"
+                  >
+                    <FaRegEnvelope />
+                    <span>Live</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            
             <div className="bg-gray-800 rounded-xl overflow-hidden shadow-2xl hover:transform hover:-translate-y-2 transition-all duration-300 group">
               <div className="relative h-48 overflow-hidden">
                 <img 
@@ -171,45 +219,7 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className="bg-gray-800 rounded-xl overflow-hidden shadow-2xl hover:transform hover:-translate-y-2 transition-all duration-300 group">
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src={Project2} 
-                  alt="Modern Blog Application" 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
-                  <span className="bg-gray-900/80 px-3 py-1 rounded-full text-sm text-blue-400">React</span>
-                  <span className="bg-gray-900/80 px-3 py-1 rounded-full text-sm text-red-400">Appwrite</span>
-                  <span className="bg-gray-900/80 px-3 py-1 rounded-full text-sm text-yellow-400">RTK Query</span>
-                </div>
-              </div>
-              <div className="p-6">
-                <h4 className="text-xl font-semibold mb-2">Modern Blog Application</h4>
-                <p className="text-gray-400 mb-4">Feature-rich blog platform with real-time updates</p>
-                <div className="flex space-x-4">
-                  <a 
-                    href="https://github.com/athashri-keny/Blog-App" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors"
-                  >
-                    <FaGithub />
-                    <span>Code</span>
-                  </a>
-                  <a 
-                    href="https://blog-app-navy-ten-46.vercel.app/" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors"
-                  >
-                    <FaRegEnvelope />
-                    <span>Live</span>
-                  </a>
-                </div>
-              </div>
-            </div>
+
             <div className="bg-gray-800 rounded-xl overflow-hidden shadow-2xl hover:transform hover:-translate-y-2 transition-all duration-300 group">
               <div className="relative h-48 overflow-hidden">
                 <img 
@@ -220,8 +230,7 @@ function App() {
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
                   <span className="bg-gray-900/80 px-3 py-1 rounded-full text-sm text-blue-400">React</span>
-                  <span className="bg-gray-900/80 px-3 py-1 rounded-full text-sm text-amber-400">Firebase</span>
-                  <span className="bg-gray-900/80 px-3 py-1 rounded-full text-sm text-emerald-400">Chart.js</span>
+                  <span className="bg-gray-900/80 px-3 py-1 rounded-full text-sm text-red-400">Appwrite</span>  
                 </div>
               </div>
               <div className="p-6">

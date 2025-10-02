@@ -12,7 +12,7 @@ function Navbar() {
           <a href="#about" className="hover:text-blue-400 transition-colors duration-300 font-rubik">About</a>
           <a href="#projects" className="hover:text-blue-400 transition-colors duration-300 font-rubik">Projects</a>
           <a href="#contact" className="hover:text-blue-400 transition-colors duration-300 font-rubik">Contact</a>
-          <a href="https://drive.google.com/file/d/1s7i0ld-pGUee3py2XKv3yInHN6-82Ifj/view? usp=sharing " target='_blank ' className='font-rubik'>Resume Pdf </a>
+          <a href="https://drive.google.com/file/d/1CFGH2qrSaYJwF1pU1IVfQ7PRq0slxNrc/view?usp=sharing " target='_blank ' className='font-rubik'>Resume Pdf </a>
           <a href="#Education" className="hover:text-blue-400 transition-colors duration-300 font-rubik">Education</a>
         </div>
            
