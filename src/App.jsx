@@ -69,6 +69,7 @@ function App() {
             >
               View Work
             </a>
+            
             <a
               href="https://drive.google.com/file/d/1s7i0ld-pGUee3py2XKv3yInHN6-82Ifj/view? usp=sharing"
               target='_'
@@ -80,6 +81,8 @@ function App() {
           </div>
         </div>
       </header>
+
+      
       <section id="about" className="py-20 px-6 bg-gray-850">
         <div className="max-w-4xl mx-auto">
           <h3 className="text-3xl font-bold text-gray-300 mb-8 text-center animate-fade-in">About Me</h3>
@@ -136,10 +139,77 @@ function App() {
           </div>
         </div>
       </section>
+
+ <section id="experience" class="py-20 px-6 bg-gray-900">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-3xl font-bold text-gray-300 mb-12 text-center animate-fade-in">Work Experience</h3>
+            
+            <div class="relative">
+                <div class="relative md:pl-16 animate-fade-in-up">
+                   
+                    
+                    <div class="bg-gray-800 rounded-xl p-6 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                            <div>
+                                <h4 class="text-2xl font-bold text-blue-400 mb-1">Full Stack Developer Intern</h4>
+                                <p class="text-xl text-gray-300 mb-2">Algoric</p>
+                                <p class="text-gray-400 flex items-center gap-2">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Remote
+                                </p>
+                            </div>
+                            <div class="mt-2 md:mt-0">
+                                <span class="inline-block bg-emerald-500/20 text-emerald-400 px-4 py-2 rounded-full text-sm font-medium border border-emerald-500/30">
+                                    <i class="far fa-calendar-alt mr-1"></i>
+                                    June 2025 – October 2025
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="border-t border-gray-700 pt-4 mt-4">
+                            <h5 class="text-lg font-semibold text-gray-200 mb-3 flex items-center gap-2">
+                                <i class="fas fa-tasks text-blue-400"></i>
+                                Key Contributions
+                            </h5>
+                            <ul class="space-y-3 text-gray-400">
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
+                                    <span>Contributed to development of <strong class="text-gray-300">Microestate</strong>, a real estate management platform</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
+                                    <span>Worked on backend development using <strong class="text-gray-300">Node.js</strong> and <strong class="text-gray-300">Express</strong>, designing and integrating REST APIs with MongoDB</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
+                                    <span>Developed backend logic and integrated <strong className='text-gray-300'> REST APIs</strong> with <strong className='text-gray-300'>MongoDB</strong> to enable features like property listing, booking, and billing</span>
+                                </li>
+                                   <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
+                                    <span>Integrated frontend and backend for smooth data flow and functionality </span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
+                                    <span>Collaborated with team to ensure secure user authentication and smooth data flow between client and server</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
+                                    <span>Gained experience in working with team, debugging, and deploying full-stack applications</span>
+                                </li>
+                              
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
       <section id="projects" className="py-20 px-6 bg-gray-900">
         <div className="max-w-6xl mx-auto">
           <h3 className="text-3xl font-bold text-gray-300 mb-12 text-center animate-fade-in">Featured Projects</h3>
           <div className="grid md:grid-cols-3 gap-8">
+
 
                         <div className="bg-gray-800 rounded-xl overflow-hidden shadow-2xl hover:transform hover:-translate-y-2 transition-all duration-300 group">
               <div className="relative h-48 overflow-hidden">

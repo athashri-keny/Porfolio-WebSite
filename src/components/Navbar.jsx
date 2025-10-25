@@ -14,6 +14,7 @@ function Navbar() {
           <a href="#contact" className="hover:text-blue-400 transition-colors duration-300 font-rubik">Contact</a>
           <a href="https://drive.google.com/file/d/1CFGH2qrSaYJwF1pU1IVfQ7PRq0slxNrc/view?usp=sharing " target='_blank ' className='font-rubik'>Resume Pdf </a>
           <a href="#Education" className="hover:text-blue-400 transition-colors duration-300 font-rubik">Education</a>
+           <a href="#experience" className="hover:text-blue-400 transition-colors duration-300 font-rubik">Experience</a>
         </div>
            
       </nav>
